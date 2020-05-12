@@ -44,16 +44,12 @@ void LEDControl (Arguments *in, Reply *out)   {
     y = in->getArg<double>();
 
     // Have code here to call another RPC function to wake up specific led or close it.
-    char buffer[500], buffer1[200], buffer2[200],buffer3[200],outbuf[256];
-    char strings[20]; char strings1[20]; char strings2[20]; char strings3[20];
-    int led1 = x;
-    int led2 = y;
-    int n = sprintf(strings, "/myled%d/write 0\r\n\n\n", led1);
-    int n1 = sprintf(strings1, "/myled%d/write 1\r\n\n\n", led1);
-    int n2 = sprintf(strings2, "/myled%d/write 0\r\n\n\n", led2);
-    int n3 = sprintf(strings3, "/myled%d/write 1\r\n\n\n", led2);
-    strcpy(buffer, strings);strcpy(buffer1, strings1);strcpy(buffer2, strings2);strcpy(buffer3, strings3);
-    strcat(buffer, buffer1); strcat(buffer, buffer2); strcat(buffer, buffer3);
+    char buffer[200], outbuf[256];
+    char strings[20];
+    int led = x;
+    int on = y;
+    int n = sprintf(strings, "/myled%d/write %d", led, on);
+    strcpy(buffer, strings);
     RPC::call(buffer, outbuf);
     if (success) {
         out->putData(buffer);
