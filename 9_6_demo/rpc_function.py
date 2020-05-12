@@ -10,14 +10,14 @@ line=s.readline() # Read an echo string from K66F terminated with '\n' (RPC repl
 print(line)
 time.sleep(1)
 
-s.write(bytes("/LEDControl/run 1\r", 'UTF-8'))
+s.write(bytes("/LEDControl/run 3\r", 'UTF-8'))
 line=s.readline() # Read an echo string from K66F terminated with '\n' (pc.putc())
 print(line)
 line=s.readline() # Read an echo string from K66F terminated with '\n' (RPC reply)
 print(line)
 time.sleep(1)
 
-s.write(bytes("/LEDControl/run 3\r", 'UTF-8'))
+s.write(bytes("/LEDControl/run 1\r", 'UTF-8'))
 line=s.readline() # Read an echo string from K66F terminated with '\n' (pc.putc())
 print(line)
 line=s.readline() # Read an echo string from K66F terminated with '\n' (RPC reply)
